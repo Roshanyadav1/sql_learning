@@ -18,5 +18,9 @@ app.get('/', (req, res) => {
 
 app.use('/food/v1', router);
 
+app.use('/signup', (req, res) => {
+    res.send("signup")
+});
+
 
 module.exports = app;
