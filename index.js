@@ -13,6 +13,7 @@ const config = {
 }
 
 
+/* Connecting to the database. */
 sql.connect(config, function (err) {
     if (err) console.log("From 1", err)
 
