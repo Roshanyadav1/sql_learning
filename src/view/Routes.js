@@ -1,8 +1,8 @@
-
 const morgan = require('morgan')
 const express = require('express');
 const cors = require('cors')
 const router = require('../controller/router');
+const { hashPassword } = require('../modules/auth');
 
 const app = express();
 app.use(cors())
@@ -18,8 +18,21 @@ app.get('/', (req, res) => {
 
 app.use('/food/v1', router);
 
-app.use('/signup', (req, res) => {
-    res.send("signup")
+app.post('/signup', async (req, res) => {
+    const { name, email, password } = req.body
+    // const userExist = users.find((user) => user.email === email)
+
+
+    const hashedPassword = await hashPassword(password)
+
+    console.log("the hashed password is", hashedPassword);
+
+    const userExist = false
+
+    if (userExist) {
+        res.status(400).json({ error: 'User already exist' })
+    }
+    res.status(200).json({ message: 'User created successfully' })
 });
 
 

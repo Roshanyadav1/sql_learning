@@ -1,20 +1,20 @@
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
 
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 // Hash password before saving to database
-export const comparePassword = async (password, hash) => {
+const comparePassword = async (password, hash) => {
     return await bcrypt.compare(password, hash);
 };
 
 
-export const hashPassword = async (password) => {
+const hashPassword = async (password) => {
     // salt = 10 is recommended by bcrypt
     return await bcrypt.hash(password, 10);
 };
 
 
-export const createJWT = (user) => {
+const createJWT = (user) => {
     const token = jwt.sign(
         { id: user.id, username: user.username },
         process.env.JWT_SECRET || "secret",
@@ -22,7 +22,7 @@ export const createJWT = (user) => {
     return token;
 };
 
-export const protect = (req, res, next) => {
+const protect = (req, res, next) => {
     const bearer = req.headers.authorization;
     if (!bearer) {
         return res.status(401).json({ message: "Unauthorized" });
@@ -42,3 +42,9 @@ export const protect = (req, res, next) => {
     }
 }
 
+module.exports = {
+    comparePassword,
+    hashPassword,
+    createJWT,
+    protect
+};

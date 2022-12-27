@@ -15,8 +15,7 @@ const config = {
 
 /* Connecting to the database. */
 sql.connect(config, function (err) {
-    if (err) console.log("From 1", err)
-
+    if (err) console.log("error from 18", err)
     console.log("Connected to database" + config.database + " on " + config.server)
 
 })
