@@ -15,13 +15,14 @@ const hashPassword = async (password) => {
 
 
 const createJWT = (user) => {
-    const token = jwt.sign(
-        { id: user.id, username: user.username },
+    const token = jwt.sign({ id: user.email, username: user.password },
         process.env.JWT_SECRET || "secret",
+        { expiresIn: '6h', algorithm: 'HS256' },
     );
     return token;
 };
 
+// Middleware to protect routes
 const protect = (req, res, next) => {
     const bearer = req.headers.authorization;
     if (!bearer) {
