@@ -8,7 +8,6 @@ const auth = require('../controller/auth');
 
 /* A middleware that checks if the user is authenticated. */
 const { protect } = require('../modules/auth');
-
 const app = express();
 app.use(cors())
 
