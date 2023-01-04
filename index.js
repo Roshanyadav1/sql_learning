@@ -4,8 +4,8 @@ require('dotenv').config()
 const sql = require('mssql/msnodesqlv8')
 
 const config = {
-    database: process.env.DATABASE_NAME,
-    server: 'HELLO🍀\\SQLSERVER',
+    database: 'testdatabase',
+    server: 'HELLO\\MSSQLSERVER01',
     driver: 'msnodesqlv8',
     options: {
         trustedConnection: true
@@ -17,7 +17,7 @@ sql.connect(config, function (err) {
     if (err) console.log("From 1", err)
 
     console.log("Connected database at ", config.server)
- 
+
 })
 
 
