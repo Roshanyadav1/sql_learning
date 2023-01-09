@@ -6,7 +6,7 @@ const sql = require('mssql/msnodesqlv8')
 
 const config = {
     database: 'testdatabase',
-    server: 'HELLO\\MSSQLSERVER01',
+    server: 'HELLO',
     driver: 'msnodesqlv8',
     options: {
         trustedConnection: true
