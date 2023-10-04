@@ -1,12 +1,38 @@
+// const app = require('./src/view/Routes');
+// require('dotenv').config()
+
+// let mysql = require('mysql');
+
+// let connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'yaduvanshi@11',
+//     database: 'roshandb'
+// });
+
+// connection.connect(function (err) {
+//     if (err) {
+//         return console.error('error: ' + err.message);
+//     }
+//     console.log('Connected to the MySQL server.');
+// });
+
+
+// app.listen(process.env.PORT || 3000, () => {
+//     console.log('Server is listening on port 3000');
+// });
+
+
+/////////////////////
 const app = require('./src/view/Routes');
-const shceduler = require('node-cron');
 
 require('dotenv').config()
 const sql = require('mssql/msnodesqlv8')
 
 const config = {
-    database: 'testdatabase',
-    server: 'HELLO',
+    server: 'localhost',
+    password: 'yaduvanshi@11',
+    database: 'roshandb',
     driver: 'msnodesqlv8',
     options: {
         trustedConnection: true
@@ -14,16 +40,11 @@ const config = {
 }
 
 
-/* Connecting to the database. */
 sql.connect(config, function (err) {
-    if (err) console.log("error from 18", err)
-    console.log("Connected to database" + config.database + " on " + config.server)
+    if (err) console.log("From 1", err)
+    else console.log("Connected database at ", config.server)
 
 })
-
-// shceduler.schedule('* * * * * *', () => {
-//     console.log('running a task every day');
-// });
 
 
 app.listen(process.env.PORT || 3000, () => {

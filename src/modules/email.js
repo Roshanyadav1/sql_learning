@@ -5,7 +5,7 @@ const { USER, PASS } = process.env;
 const SMTP_CONFIG = 587;
 const HOST = 'smtp.gmail.com';
 
-const CC
+// const CC
 
 const SENDER_EMAIL = 'mrroshan738949@gmail.com'
 const RECEIVER_EMAIL = 'roshay.bca2020@ssism.org'
