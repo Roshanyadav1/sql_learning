@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const sql = require('mssql/msnodesqlv8')
+const sql = require('mssql')
 const moment = require('moment')
 
 const router = Router();
@@ -81,10 +81,6 @@ router.post('/addUser', (req, res) => {
     }
 
 })
-
-
-
-
 
 
 
