@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const sql = require('mssql')
 const moment = require('moment')
+const db = require('../db/conn')
 
 const router = Router();
 
@@ -12,6 +13,16 @@ router.get('/menu', (req, res) => {
 // order routes
 router.get('/order', (req, res) => {
     res.send('order')
+})
+
+router.get('/getAllUser', (req, res) => {
+    // SELECT * FROM roshandb.new_table;
+    db.query('SELECT * FROM roshandb.new_table', (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        res.send(result)
+    })
 })
 
 
